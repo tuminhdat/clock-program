@@ -18,6 +18,8 @@ let secsHandArray = [];
 let minsHandArray = [];
 let hrsHandArray = [];
 
+let handleHrs = 0;
+
 
 clockStart();
 
@@ -29,6 +31,8 @@ function clockStart(){
     generateSecHand();
     nextTick();
 }
+
+console.log(hrsHandArray);
 
 function nextTick(){
     intervalID = setInterval(() => {
@@ -73,15 +77,15 @@ function drawClock(){
     drawHrs();
     drawMins();
     drawSecHand();
-    drawMinHand();
     drawHrsHand();
+    drawMinHand();
     centerCircle();
 }
 
 function drawOuterCircle(){
     let clockOuterRadius = clockWidth / 2 - 10;
-    ctx.fillStyle = "lightblue";
-    ctx.strokeStyle = "darkblue";
+    ctx.fillStyle = "#e2d810";
+    ctx.strokeStyle = "#e2d810";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.arc(clockWidth / 2, clockHeight / 2, clockOuterRadius, 0, 2 * Math.PI);
@@ -137,8 +141,8 @@ function generateMins(){
 }
 
 function drawSecHand(){
-    ctx.strokeStyle = "red";
-    ctx.fillStyle = "red";
+    ctx.strokeStyle = "#d9138a";
+    ctx.fillStyle = "#d9138a";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(clockWidth / 2, clockWidth / 2);
@@ -148,14 +152,14 @@ function drawSecHand(){
 
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(secsHandArray[secs].x, secsHandArray[secs].y, 5, 0, 2 * Math.PI);
+    ctx.arc(secsHandArray[secs].x, secsHandArray[secs].y, 3, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
 }
 
 function drawMinHand(){
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "black";
+    ctx.strokeStyle = "#12a4d9";
+    ctx.fillStyle = "#12a4d9";
     ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.moveTo(clockWidth / 2, clockWidth / 2);
@@ -171,21 +175,33 @@ function drawMinHand(){
 }
 
 function drawHrsHand(){
-    // if (mins % 10 == 0){
-    //     // ctx.lineTo(hrsHandArray[hrs].x, hrsHandArray[hrs].y); 
-    // }
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "black";
+
+    let time, firstDigit;
+
+    if (String(mins).length > 1){
+        firstDigit = String(mins).charAt(0);
+    } else {
+        firstDigit = 0;
+    }
+
+    if (hrs == 12) {
+        time = 0;
+    } else {
+        time = hrs * 5 + Number(firstDigit) - 1;
+    }
+
+    ctx.strokeStyle = "#322e2f";
+    ctx.fillStyle = "#322e2f";
     ctx.lineWidth = 8;
     ctx.beginPath();
     ctx.moveTo(clockWidth / 2, clockWidth / 2);
-    ctx.lineTo(hrsHandArray[hrs].x, hrsHandArray[hrs].y); 
+    ctx.lineTo(hrsHandArray[time].x, hrsHandArray[time].y); 
     ctx.stroke();
     ctx.fill();
 
     ctx.lineWidth = 10;
     ctx.beginPath();
-    ctx.arc(hrsHandArray[hrs].x, hrsHandArray[hrs].y, 5, 0, 2 * Math.PI);
+    ctx.arc(hrsHandArray[time].x, hrsHandArray[time].y, 5, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
 }
@@ -209,25 +225,29 @@ function generateMinHand(){
 }
 
 function generateHrHand(){
-    for (let i = 1; i <= 12; i++) {
-        const theta = (2 * Math.PI / 12) * (i - 3);
-        const x = (clockWidth / 2) + (clockRadius - 60) * Math.cos(theta);
-        const y = (clockHeight / 2 + 10) + (clockRadius - 60) * Math.sin(theta);
-        hrsHandArray.unshift({ x, y });
-    }
-
-    // for (let i = 0; i < 60; i++) {
-    //     const angle = (i / 60) * 2 * Math.PI;
-    //     const x = (clockWidth / 2) + (clockRadius - 60) * Math.sin(angle);
-    //     const y = (clockHeight / 2) - (clockRadius - 60) * Math.cos(angle);
+    // for (let i = 1; i <= 12; i++) {
+    //     const theta = (2 * Math.PI / 12) * (i - 3);
+    //     const x = (clockWidth / 2) + (clockRadius - 60) * Math.cos(theta);
+    //     const y = (clockHeight / 2 + 10) + (clockRadius - 60) * Math.sin(theta);
     //     hrsHandArray.push({ x, y });
     // }
+
+    // hrsHandArray.unshift(hrsHandArray.pop());
+
+    for (let i = 0; i < 60; i++) {
+        const angle = (i / 60) * 2 * Math.PI;
+        const x = (clockWidth / 2) + (clockRadius - 60) * Math.sin(angle);
+        const y = (clockHeight / 2) - (clockRadius - 60) * Math.cos(angle);
+        hrsHandArray.push({ x, y });
+    }
+
+    
 }
 
 function centerCircle(){
     ctx.fillStyle = "black";
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(clockWidth / 2, clockHeight / 2, 5, 0, 2 * Math.PI);
     ctx.stroke();
