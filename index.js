@@ -17,9 +17,7 @@ let hrsArray = [];
 let secsHandArray = [];
 let minsHandArray = [];
 let hrsHandArray = [];
-
 let handleHrs = 0;
-
 
 clockStart();
 
@@ -31,8 +29,6 @@ function clockStart(){
     generateSecHand();
     nextTick();
 }
-
-console.log(hrsHandArray);
 
 function nextTick(){
     intervalID = setInterval(() => {
@@ -56,15 +52,8 @@ function displayDayTime(){
     hrs = date.getHours();
     mins = date.getMinutes();
     secs = date.getSeconds();
-
-    hrs = hrs % 12;
     am_pm = (hrs < 12) ? "AM" : "PM"; 
-
-    // day = (day.toString().length == 1) ? "0" + day : day;
-    // month = (month.toString().length == 1) ? "0" + month : month;
-    // hrs = (hrs.toString().length == 1) ? "0" + hrs : hrs;
-    // mins = (mins.toString().length == 1) ? "0" + mins : mins;
-    // secs = (secs.toString().length == 1) ? "0" + secs : secs;
+    hrs = hrs % 12;
 
     myDate.textContent = `${daysOfWeek[dayName]}, ${months[monthName]} ${day}, ${year}`;
     myTime.textContent = `${(hrs.toString().length == 1) ? "0" + hrs : hrs}:` + 
@@ -225,15 +214,6 @@ function generateMinHand(){
 }
 
 function generateHrHand(){
-    // for (let i = 1; i <= 12; i++) {
-    //     const theta = (2 * Math.PI / 12) * (i - 3);
-    //     const x = (clockWidth / 2) + (clockRadius - 60) * Math.cos(theta);
-    //     const y = (clockHeight / 2 + 10) + (clockRadius - 60) * Math.sin(theta);
-    //     hrsHandArray.push({ x, y });
-    // }
-
-    // hrsHandArray.unshift(hrsHandArray.pop());
-
     for (let i = 0; i < 60; i++) {
         const angle = (i / 60) * 2 * Math.PI;
         const x = (clockWidth / 2) + (clockRadius - 60) * Math.sin(angle);

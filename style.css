@@ -1,9 +1,98 @@
-#myContainer{
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+#leftContainer{
+    left: 0;
+    background-color: #00203FFF;
+}
+
+#clockContainer{
+    margin-top: 10%;
     text-align: center;
 }
 
-#myTitle{
-    font-family: 'Brush Script MT', cursive;
-    size: 200px;
-    margin: 20px;
+#myDate, #myTime{
+    color: wheat;
+    font-family: consolas, monospace;
+    font-size: 30px;
+}
+
+#rightContainer{
+    right: 0;
+    background-color: #ADEFD1FF;
+    text-align: center;
+    justify-content: center;
+}
+
+#alarmContainer{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    display: grid;
+    grid-template-columns: 130px 40px 130px;
+    width: 300px;
+    height: 140px;
+    background-color: #333333;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px lightgray;
+}
+
+#displayHour{
+    grid-column: 1/2;
+    text-align: center;
+}
+
+#displayDot{
+    grid-column: 2/3;
+    text-align: center;
+}
+
+#displayMinute{
+    grid-column: 3/4;
+    text-align: center;
+}
+
+.textTime{
+    font-size: 75px;
+    color: red;
+    text-shadow: 2px 2px 5px lightpink;
+    font-family: consolas, monospace;
+}
+
+.timerBtn{
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: gray;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
+    font-family: consolas, monospace;
+    box-shadow: 2px 2px 5px lightgray;
+    text-align: center;
+    vertical-align: middle;
+    margin: 2px;
+}
+
+#startAlarm{
+    margin-top: 30px;
+    width: 240px;
+    height: 50px;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: red;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 1px 1px 5px lightgray;
+    cursor: pointer;
 }
