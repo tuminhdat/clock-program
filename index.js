@@ -65,16 +65,16 @@ function drawClock(){
     drawOuterCircle();
     drawHrs();
     drawMins();
-    drawSecHand();
     drawHrsHand();
     drawMinHand();
+    drawSecHand();
     centerCircle();
 }
 
 function drawOuterCircle(){
     let clockOuterRadius = clockWidth / 2 - 10;
-    ctx.fillStyle = "#e2d810";
-    ctx.strokeStyle = "#e2d810";
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "white";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.arc(clockWidth / 2, clockHeight / 2, clockOuterRadius, 0, 2 * Math.PI);
@@ -130,8 +130,8 @@ function generateMins(){
 }
 
 function drawSecHand(){
-    ctx.strokeStyle = "#d9138a";
-    ctx.fillStyle = "#d9138a";
+    ctx.strokeStyle = "#408ec6";
+    ctx.fillStyle = "#408ec6";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(clockWidth / 2, clockWidth / 2);
@@ -147,8 +147,8 @@ function drawSecHand(){
 }
 
 function drawMinHand(){
-    ctx.strokeStyle = "#12a4d9";
-    ctx.fillStyle = "#12a4d9";
+    ctx.strokeStyle = "#7a2048";
+    ctx.fillStyle = "#7a2048";
     ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.moveTo(clockWidth / 2, clockWidth / 2);
@@ -158,7 +158,7 @@ function drawMinHand(){
 
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(minsHandArray[mins].x, minsHandArray[mins].y, 5, 0, 2 * Math.PI);
+    ctx.arc(minsHandArray[mins].x, minsHandArray[mins].y, 2, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
 }
@@ -179,18 +179,18 @@ function drawHrsHand(){
         time = hrs * 5 + Number(firstDigit) - 1;
     }
 
-    ctx.strokeStyle = "#322e2f";
-    ctx.fillStyle = "#322e2f";
-    ctx.lineWidth = 8;
+    ctx.strokeStyle = "#1e2761";
+    ctx.fillStyle = "#1e2761";
+    ctx.lineWidth = 10;
     ctx.beginPath();
     ctx.moveTo(clockWidth / 2, clockWidth / 2);
     ctx.lineTo(hrsHandArray[time].x, hrsHandArray[time].y); 
     ctx.stroke();
     ctx.fill();
 
-    ctx.lineWidth = 10;
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(hrsHandArray[time].x, hrsHandArray[time].y, 5, 0, 2 * Math.PI);
+    ctx.arc(hrsHandArray[time].x, hrsHandArray[time].y, 3, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
 }
@@ -225,11 +225,11 @@ function generateHrHand(){
 }
 
 function centerCircle(){
-    ctx.fillStyle = "black";
-    ctx.strokeStyle = "black";
+    ctx.fillStyle = "#408ec6";
+    ctx.strokeStyle = "#408ec6";
     ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.arc(clockWidth / 2, clockHeight / 2, 5, 0, 2 * Math.PI);
+    ctx.arc(clockWidth / 2, clockHeight / 2, 4, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
 }
