@@ -10,6 +10,7 @@
 <body>
 
     <div id="leftContainer" class="split">
+        <h1 id="annualTitle">Annual Clock</h1>
         <div id="clockContainer">
             <canvas id="clockCanvas" width="500" height="500"></canvas>
             <br>
@@ -20,28 +21,30 @@
     </div>
 
     <div id="rightContainer" class="split">
+        <h1 id="digitalTitle">Digital  Clock</h1>
         <div id="alarmContainer">
             <div id="displayHour">
                 <label class="textTime">00</label>
-                <div id="btnHour">
-                    <button id="increaseHour" class="timerBtn">+</button>
-                    <button id="decreaseHour" class="timerBtn">-</button>
-                </div>
             </div>
-    
+            <div id="displayDot1">
+                <label class="textTime">:</label>
+            </div>
+            <div id="displayMinute">
+                <label class="textTime">00</label>
+            </div>
             <div id="displayDot">
                 <label class="textTime">:</label>
             </div>
-            
-            <div id="displayMinute">
+            <div id="displaySecond">
                 <label class="textTime">00</label>
-                <div id="btnMin">
-                    <button id="increaseMinute" class="timerBtn">+</button>
-                    <button id="decreaseMinute" class="timerBtn">-</button>
-                </div>
             </div>
-        </div>
-        <button id="startAlarm">SET ALARM</button>
+            <div id="displayAMPM">
+                <label class="textTime">AM</label>
+            </div>
+
+            <div id="displayFullTime">
+                <label id="textFullTime">Wednesday, February 22, 2023</label>
+            </div>
     </div>
 
     <script type="module" src="index.js"></script>
