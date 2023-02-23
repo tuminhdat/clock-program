@@ -8,6 +8,11 @@ const hrsHand = 0;
 const secsHand = 0;
 const myTime = document.querySelector("#myTime");
 const myDate = document.querySelector("#myDate");
+const dHour = document.getElementById("dHour");
+const dMin = document.getElementById("dMin");
+const dSec = document.getElementById("dSec");
+const dAmPm = document.getElementById("dAmPm");
+const dFullTime = document.getElementById("dFullTime");
 let intervalID;
 let hrs, mins, secs, day, monthName, year, dayName, am_pm;
 let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -59,6 +64,12 @@ function displayDayTime(){
     myTime.textContent = `${(hrs.toString().length == 1) ? "0" + hrs : hrs}:` + 
                             `${(mins.toString().length == 1) ? "0" + mins : mins}:` +
                             `${(secs.toString().length == 1) ? "0" + secs : secs} ${am_pm}`;
+
+    dHour.textContent = `${(hrs.toString().length == 1) ? "0" + hrs : hrs}`;
+    dMin.textContent = `${(mins.toString().length == 1) ? "0" + mins : mins}`;
+    dSec.textContent = `${(secs.toString().length == 1) ? "0" + secs : secs}`;
+    dAmPm.textContent = am_pm;
+    dFullTime.textContent = `${daysOfWeek[dayName]}, ${months[monthName]} ${day}, ${year}`;
 }
 
 function drawClock(){
