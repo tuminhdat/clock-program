@@ -5,9 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="alarm.css">
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Clock</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="alarm.html">Alarm <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+    </nav>
 
     <div id="alarmBody">
         <div id="timeContainer">
@@ -22,6 +36,19 @@
         </div>
     </div>
 
+    <div id="doAlarmSection">
+        <div id="displayAlarm">
+            <div id="displayTime">
+                <label id="remainTime">3 hours and 40 minutes</label>
+                <br>
+                <label id="alarmTime">00:00:00 Am</label>
+                <br>
+                <button type="submit" id="editAlarm">Edit Alarm</button>
+                <button type="submit" id="deleteAlarm">Delete Alarm</button>
+            </div>
+        </div>
+    </div>
+
     <div class="popup" id="popup">
         <div id="alarmForm">
             <div id="item1">
@@ -32,7 +59,7 @@
                 <label class="timeText">Hours</label>
                 <br>
                 <select id="hours" class="optionSelector">
-                    <option value="12">12 AM</option>
+                    <option value="0">12 AM</option>
                     <option value="1">1 AM</option>
                     <option value="2">2 AM</option>
                     <option value="3">3 AM</option>
@@ -44,7 +71,7 @@
                     <option value="9">9 AM</option>
                     <option value="10">10 AM</option>
                     <option value="11">11 AM</option>
-                    <option value="24">12 PM</option>
+                    <option value="12">12 PM</option>
                     <option value="13">1 PM</option>
                     <option value="14">2 PM</option>
                     <option value="15">3 PM</option>
@@ -62,6 +89,7 @@
                 <label class="timeText">Minutes</label>
                 <br>
                 <select id="mins" class="optionSelector">
+                    <option value="0">00</option>
                     <option value="1">01</option>
                     <option value="2">02</option>
                     <option value="3">03</option>
