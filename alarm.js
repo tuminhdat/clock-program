@@ -26,7 +26,8 @@ runAlarm();
 
 document.getElementById("openSetAlarmBtn").addEventListener("click", openAlarmForm);
 document.getElementById("closeSetAlarmBtn").addEventListener("click", closeAlarmForm);
-document.getElementById("closeForm").addEventListener("click", closeAlarmForm);
+document.getElementById("closeForm").addEventListener("click", exitAlarm);
+document.getElementById("deleteAlarm").addEventListener("click", deleteAlarm);
 
 function openAlarmForm(){
     popup.classList.add("open-popup");
@@ -42,6 +43,17 @@ function closeAlarmForm(){
     displayAlarmTime();
     setAlarm();
     running = true;
+}
+
+function exitAlarm(){
+    popup.classList.remove("open-popup");
+    body.style.filter = "brightness(100%)";
+    running = false;
+}
+
+function deleteAlarm(){
+    doAlarmSection.style.visibility = "hidden";
+    running = false;
 }
 
 function setUpTime(){
@@ -107,9 +119,10 @@ function displayAlarmRemainTime(){
     let diff = alarm.getTime() - date.getTime();
     remainHour = Math.floor(diff / 3600000);
     remainMinute = Math.round((diff / 60000) % 60);
-    remainTime.textContent = `${remainHour} hour and ${remainMinute}`;
     if (remainHour == 0 && remainMinute == 0){
         running = false;
         doAlarmSection.style.visibility = "hidden";
     }
+    remainTime.textContent = `${remainHour} hour and ${remainMinute}`;
+    
 }
