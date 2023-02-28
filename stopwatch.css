@@ -1,0 +1,27 @@
+.timerBtn{
+    width: 120px;
+    height: 50px;
+    border: 3px solid;
+    border-radius: 12px;
+    background-color: #b35437;
+    color: white;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+#timeDisplay{
+    font-size: 75px;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#timeContainer{
+    text-align: center;
+    border: 3px solid;
+    border-radius: 25px;
+    background-color: #f0a141;
+    width: 90%;
+    margin: auto;
+}
